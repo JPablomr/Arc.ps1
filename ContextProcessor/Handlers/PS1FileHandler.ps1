@@ -3,6 +3,9 @@ function PS1Handler{
     #I'm lazy, so this searches uses a global Variable for the rootpath
     $fileLocation = $Global:Variables.RootDir + $context.Request.Url.AbsolutePath.Replace("/","\")
     
+    # Should keep Directory Traversal Attacks at bay.
+    $fileLocation -replace "..\",".\"
+
     if(-not (Test-Path $fileLocation)){
         return (404Handler $context)
     }
