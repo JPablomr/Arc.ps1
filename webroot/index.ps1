@@ -1,0 +1,1 @@
+Write-Host "Executing a script works as well!"
